@@ -10,6 +10,28 @@ app.use(bodyParser.json());
 var lions = [];
 var id = 0;
 
+app.delete('/lions/:id', function(req, res)
+{
+	var i=lions.indexOf(lion);
+	var p=req.body;
+	var check=i!=p;
+	var obj=_.find(lions, 
+	{
+		id: req.params.id
+	}
+	);
+	
+	if(check){
+		res.send();
+	}
+	else{
+		delete lions[obj];
+		res.json(lions);
+	}
+});
+
+
+
 app.get('/lions', function(req, res){
   res.json(lions);
 });
